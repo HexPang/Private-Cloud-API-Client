@@ -3,7 +3,7 @@
     "description": "API Client For Private Cloud.",
     "type": "library",
     "require": {
-        "php": "^5.5",
+        "php": ">=5.5",
         "ext-curl": "^7.0"
     },
     "require-dev": {
@@ -16,5 +16,9 @@
             "email": "hexpang@jabstruse.com"
         }
     ],
-    "minimum-stability": "dev"
+    "autoload": {
+       "psr-4": {
+          "hexpang\\Client\\": "./src/hexpang/Client"
+       }
+   }
 }
