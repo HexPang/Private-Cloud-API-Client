@@ -12,3 +12,4 @@ API Client For Private Cloud Service.
 | Method | Description | Usage |
 | ------ | ----------- | ----- |
 | KeySet | Create or Update key | KeySet(key,[data]) |
+| KeyGet | Get Key | KeyGet(key) |
