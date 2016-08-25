@@ -10,7 +10,7 @@ class CloudAPIClient{
       $this->app_id = $app_id;
     }
     private function API_POST($url,$data){
-      $sign = md5($this->app_id . $data);
+      $sign = md5($this->app_id . json_encode($data));
       $data['sign'] = $sign;
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_HEADER, false);
@@ -45,7 +45,7 @@ class CloudAPIClient{
     public function KeyGet($key){
       $url = $this->API_URL . "api/{$this->app_id}/{$key}";
       $response = $this->API_GET($url);
-      return json_encode($response,true);
+      return json_decode($response,true);
     }
     public function KeySet($key,$data){
       $url = $this->API_URL . "api/{$this->app_id}/{$key}/";
