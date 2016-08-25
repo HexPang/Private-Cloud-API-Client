@@ -7,7 +7,7 @@ class CloudAPIClient{
     public function __construct($app_id)
     {
       $this->API_URL = 'http://localhost:8000/';
-        $this->app_id = $app_id;
+      $this->app_id = $app_id;
     }
     private function API_POST($url,$data){
       $sign = md5($this->app_id . $data);
@@ -43,17 +43,17 @@ class CloudAPIClient{
       return $result;
     }
     public function KeyGet($key){
-      $url = $this->API_URL . "api/{$this->app_id}/{$key}"
-      $result = $this->API_GET($url);
-      return json_encode($result,true);
+      $url = $this->API_URL . "api/{$this->app_id}/{$key}";
+      $response = $this->API_GET($url);
+      return json_encode($response,true);
     }
     public function KeySet($key,$data){
-        $url = $this->API_URL . "api/{$this->app_id}/{$key}/";
-        $data = json_encode($data);
-        $data = urlencode($data);
-        $sign = md5($this->app_id . $data);
-        $result = $this->API_POST($url,['data'=>$data]);
-        return json_decode($result,true);
+      $url = $this->API_URL . "api/{$this->app_id}/{$key}/";
+      $data = json_encode($data);
+      $data = urlencode($data);
+      $sign = md5($this->app_id . $data);
+      $response = $this->API_POST($url,['data'=>$data]);
+      return json_decode($response,true);
     }
 }
 ?>
