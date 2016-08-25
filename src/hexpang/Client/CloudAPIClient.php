@@ -42,13 +42,18 @@ class CloudAPIClient{
       curl_close($ch);
       return $result;
     }
+    public function KeyGet($key){
+      $url = $this->API_URL . "api/{$this->app_id}/{$key}"
+      $result = $this->API_GET($url);
+      return json_encode($result,true);
+    }
     public function KeySet($key,$data){
         $url = $this->API_URL . "api/{$this->app_id}/{$key}/";
         $data = json_encode($data);
         $data = urlencode($data);
         $sign = md5($this->app_id . $data);
         $result = $this->API_POST($url,['data'=>$data]);
-        return $result;
+        return json_decode($result,true);
     }
 }
 ?>
